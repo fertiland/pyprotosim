@@ -5,8 +5,6 @@
 # Version 0.1, Last change on Feb 12, 2019
 # This software is distributed under the terms of BSD license.    
 ##################################################################
-
-# EAP-AKA/AKA' client
 import logging
 import argparse
 
