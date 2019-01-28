@@ -13,10 +13,6 @@ import time
 import sys
 import logging
 
-#Next line is to include parent directory in PATH where libraries are
-sys.path.append("..")
-# Remove it normally
-
 from libDiameter import *
 import eap
 import argparse
@@ -91,36 +87,33 @@ def processEapPayload():
 
     parser.add_argument("-i", "--identity", help="raw identity")
     parser.add_argument("-I", "--ik", help="IK")
-    parser.add_argument("-C", "--ck", help="CK")
+    parser.add_argument("-C", "--ck", help="CK ")
     parser.add_argument("-X", "--xres", help="XRES")
 
     args = parser.parse_args()
     
     if args.encode :
         identity = args.identity
-        ik = args.ik.decode('base64').encode('hex')
-        ck = args.ck.decode('base64').encode('hex')
-        xres = args.xres.decode('base64').encode('hex')
+        ik = args.ik
+        ck = args.ck
+        xres = args.xres
 
         payload = Payload_Challenge_Response(eap.EAP_CODE_RESPONSE,"",eap.EAP_TYPE_AKA, identity, ik, ck, xres)
 
         print "="*30
         print 'EAP-Payload = {0}'.format(payload)
-        print 'EAP-Payload.hex.base64 = {0}'.format(payload.decode("hex").encode("base64"))
         print "-"*30
     
     if args.decode:
-        payload = args.decode.decode('base64').encode('hex') 
+        payload = args.decode
         dump_EapPayload(payload)
 
 if __name__ == "__main__":
-
     #logging.basicConfig(level=logging.DEBUG)
     LoadDictionary("./dictDiameter.xml")
     eap.LoadEAPDictionary("./dictEAP.xml")
 
     processEapPayload()
-    
     
 
 ######################################################        
