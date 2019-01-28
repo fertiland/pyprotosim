@@ -304,7 +304,6 @@ def addEAPIdentity(msg):
     return "%02X"%EAP_TYPE_IDENTITY+msg.encode("hex")
 
 def addEAPAVP(name,value):
-    value = str(value)
     (code,reserved)=dictEAPname2code(name)
     ret="%02X"%int(code)
     mlen=(len(value)+7)/8+1
@@ -365,7 +364,7 @@ def exec_calc(cmd_type,params):
     #('Mandriva Linux', '2010.0', 'Official')    
     # FIXME: Learn to make distinction based on libc6 (e.g REHL/Ubuntu) to trigger proper aplication
     if platform.system()=="Linux":
-        ret=commands.getoutput("./eapcalc"+" "+args)
+        ret=commands.getoutput("./eapcalc.linux"+" "+args)
     dbg="Calc output",ret
     logging.debug(dbg)
     if cmd_type=="milenage-f2345":
@@ -453,7 +452,7 @@ def addMAC(E,K,extra=""):
     # Do the calc
     dbg="Calculate ",hmac_type,K,tmp
     logging.debug(dbg)
-    params="0x"+str(K)+" 0x"+tmp    
+    params="0x"+K+" 0x"+tmp    
     if len(extra)>0:
         params+=" 0x"+extra
     MAC=exec_calc(hmac_type,params) 
