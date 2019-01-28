@@ -7,15 +7,11 @@
 ##################################################################
 
 # EAP-AKA/AKA' client
-
-import datetime
-import time
-import sys
 import logging
+import argparse
 
 from libDiameter import *
 import eap
-import argparse
 
 def Payload_Challenge_Response(ID,RAND,ETYPE, 
                                RAWIDENTITY='0121111234561000@wlan.mnc023.mcc262.3gppnetwork.org',
