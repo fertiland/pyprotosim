@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ##################################################################
-# Copyright (c) 2012, Sergej Srepfler <sergej.srepfler@gmail.com>
-# February 2012 - 
-# Version 0.3, Last change on Oct 30, 2012
+# Copyright (c) 2019, Fertiland Lee <fertiland.lee@163.com>
+# February 2019
+# Version 0.1, Last change on Feb 12, 2019
 # This software is distributed under the terms of BSD license.    
 ##################################################################
 
